@@ -30,12 +30,17 @@ public class Deck {
   * @param values is an array containing all of the card point values.
   */
  public Deck(String[] ranks, String[] suits, int[] values) {
-   
-   for(int i = 0; i < ranks.length; i++){
-     Card card = new Card(ranks.get(i), suits.get(i), values.get(i));
-     cards.add(card);
+   size =0;
+   cards = new ArrayList<Card>();
+   for(int i = 0; i < suits.length; i++){
+     for(int k = 0; k < ranks.length;k++){
+       Card card = new Card(ranks[k], suits[i], values[k]);
+       cards.add(card);
+       size++;
+     }
    }
- }
+   }
+ 
 
 
  /**
@@ -44,6 +49,10 @@ public class Deck {
   */
  public boolean isEmpty() {
   /* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+   if(cards.size() == 0){
+     return true;
+   }
+   return false;
  }
 
  /**
@@ -52,6 +61,7 @@ public class Deck {
   */
  public int size() {
   /* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+   return size;
  }
 
  /**
@@ -69,6 +79,8 @@ public class Deck {
   */
  public Card deal() {
   /* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+   
+   return cards.get(-1 + size--);
  }
 
  /**
